@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Focus Buddy</title>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		body {
+			width: 260px;
+			min-height: 240px;
+			margin: 0;
+			padding: 0;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			background-color: #f9fafc;
+		}
+
+		.popup-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			padding: 1.5rem;
+		}
+
+		.toggle-button {
+			width: 120px;
+			height: 120px;
+			margin-bottom: 1.5rem;
+			background-color: #f0f0f0;
+			border-radius: 50%;
+			position: relative;
+			cursor: pointer;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			border: 8px solid white;
+		}
+
+		.toggle-button:hover {
+			transform: scale(1.05);
+		}
+
+		.toggle-button.active {
+			background-color: #3b82f6;
+			box-shadow:
+				0 0 0 6px rgba(59, 130, 246, 0.1),
+				0 0 20px rgba(59, 130, 246, 0.4),
+				0 6px 18px rgba(0, 0, 0, 0.18);
+		}
+
+		.toggle-button:not(.active) {
+			background-color: #10b981;
+			box-shadow:
+				0 0 0 6px rgba(16, 185, 129, 0.1),
+				0 0 20px rgba(16, 185, 129, 0.2),
+				0 6px 18px rgba(0, 0, 0, 0.12);
+		}
+
+		.toggle-icon {
+			font-size: 42px;
+			transition: all 0.3s ease;
+			user-select: none;
+		}
+
+		.status-text {
+			font-size: 1.25rem;
+			font-weight: 600;
+			margin-bottom: 2rem;
+			color: #374151;
+			transition: color 0.3s ease;
+			text-align: center;
+			width: 100%;
+		}
+
+		.status-text.active {
+			color: #1e40af;
+		}
+
+		.status-text:not(.active) {
+			color: #047857;
+		}
+
+		.manage-link {
+			background-color: #f3f4f6;
+			color: #4b5563;
+			padding: 0.75rem 1.25rem;
+			border-radius: 0.75rem;
+			text-decoration: none;
+			font-size: 0.875rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			border: none;
+			cursor: pointer;
+		}
+
+		.manage-link:hover {
+			background-color: #e5e7eb;
+			color: #1f2937;
+			transform: translateY(-2px);
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+		}
+
+		@keyframes pulse {
+			0% {
+				box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+			}
+
+			70% {
+				box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+			}
+
+			100% {
+				box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+			}
+		}
+
+		.toggle-button.active {
+			animation: pulse 2s infinite;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="popup-container">
+		<div id="big-toggle" class="toggle-button active">
+			<div class="toggle-icon">🛡️</div>
+		</div>
+		<div id="status-text" class="status-text active">Shield Up: Focus Mode</div>
+		<button id="manage-link" class="manage-link">Manage blocked sites</button>
+	</div>
+
+	<script src="popup.js"></script>
+</body>
+
+</html>
