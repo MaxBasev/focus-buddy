@@ -4,12 +4,20 @@ document.addEventListener('DOMContentLoaded', function () {
 	const toggleButton = document.getElementById('big-toggle');
 	const toggleIcon = toggleButton.querySelector('.toggle-icon');
 	const statusText = document.getElementById('status-text');
+	const sitesCounter = document.getElementById('sites-counter');
+	const sitesCount = document.getElementById('sites-count');
 	const manageLink = document.getElementById('manage-link');
 
 	// Load current state from storage
-	chrome.storage.sync.get(['isActive'], function (result) {
+	chrome.storage.sync.get(['isActive', 'blockedSites'], function (result) {
 		// Set toggle button state
 		const isActive = result.isActive !== undefined ? result.isActive : true;
+
+		// Update blocked sites count
+		const sites = result.blockedSites || [];
+		sitesCount.textContent = sites.length;
+
+		// Update UI state
 		updateToggleState(isActive);
 	});
 
@@ -41,11 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (isActive) {
 			toggleButton.classList.add('active');
 			statusText.classList.add('active');
+			sitesCounter.classList.add('active');
 			toggleIcon.textContent = '🛡️'; // Shield icon
 			statusText.textContent = 'Shield Up: Focus Mode';
 		} else {
 			toggleButton.classList.remove('active');
 			statusText.classList.remove('active');
+			sitesCounter.classList.remove('active');
 			toggleIcon.textContent = '🍃'; // Leaf/frog icon
 			statusText.textContent = 'Zen Mode: Take a Break';
 		}

@@ -6,6 +6,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Focus Buddy Options</title>
 	<link rel="stylesheet" href="styles.css">
+	<style>
+		.card {
+			border-radius: 0.75rem;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+		}
+
+		.blocked-sites-title {
+			font-size: 1.25rem;
+			font-weight: 700;
+		}
+
+		.site-input {
+			border-radius: 6px;
+		}
+
+		.site-list {
+			border-radius: 6px;
+		}
+
+		.site-item {
+			border-radius: 6px;
+		}
+	</style>
 </head>
 
 <body class="options-body">
@@ -24,14 +47,15 @@
 
 			<div class="mb-4">
 				<div class="flex items-center mb-4">
-					<h2>Blocked Sites</h2>
+					<h2 class="blocked-sites-title">Blocked Sites</h2>
 					<span class="badge">
 						<span id="sites-count">0</span> sites
 					</span>
 				</div>
 
 				<div class="flex mb-4">
-					<input type="text" id="site-input" placeholder="Enter website to block (e.g., facebook.com)">
+					<input type="text" id="site-input" class="site-input"
+						placeholder="Enter website to block (e.g., instagram.com)">
 					<button id="add-site-btn" class="ml-2">Add Site</button>
 				</div>
 
